@@ -8,8 +8,9 @@ import Workout from './models/Workout';
 
 const app = express();
 const PORT = 8000;
-const codespaceName = process.env.CODESPACE_NAME;
-const API_BASE_URL = codespaceName ? `https://${codespaceName}-${PORT}.app.github.dev` : `http://localhost:${PORT}`;
+const API_BASE_URL = process.env.CODESPACE_NAME
+  ? 'https://super-space-parakeet-jjrvwxgwpp7r2j6rq.github.dev'
+  : `http://localhost:${PORT}`;
 
 app.use(express.json());
 

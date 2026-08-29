@@ -12,8 +12,9 @@ const User_1 = __importDefault(require("./models/User"));
 const Workout_1 = __importDefault(require("./models/Workout"));
 const app = (0, express_1.default)();
 const PORT = 8000;
-const codespaceName = process.env.CODESPACE_NAME;
-const API_BASE_URL = codespaceName ? `https://${codespaceName}-${PORT}.app.github.dev` : `http://localhost:${PORT}`;
+const API_BASE_URL = process.env.CODESPACE_NAME
+    ? 'https://super-space-parakeet-jjrvwxgwpp7r2j6rq.github.dev'
+    : `http://localhost:${PORT}`;
 app.use(express_1.default.json());
 app.get('/api/health', (_req, res) => {
     res.json({ status: 'ok', service: 'octofit-tracker-backend' });
