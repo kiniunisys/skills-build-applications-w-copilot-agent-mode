@@ -9,7 +9,7 @@ import Workout from './models/Workout';
 const app = express();
 const PORT = 8000;
 const API_BASE_URL = process.env.CODESPACE_NAME
-  ? 'https://super-space-parakeet-jjrvwxgwpp7r2j6rq.github.dev'
+  ? `https://${process.env.CODESPACE_NAME}-${PORT}.app.github.dev`
   : `http://localhost:${PORT}`;
 
 app.use(express.json());

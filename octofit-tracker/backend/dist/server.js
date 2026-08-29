@@ -13,7 +13,7 @@ const Workout_1 = __importDefault(require("./models/Workout"));
 const app = (0, express_1.default)();
 const PORT = 8000;
 const API_BASE_URL = process.env.CODESPACE_NAME
-    ? 'https://super-space-parakeet-jjrvwxgwpp7r2j6rq.github.dev'
+    ? `https://${process.env.CODESPACE_NAME}-${PORT}.app.github.dev`
     : `http://localhost:${PORT}`;
 app.use(express_1.default.json());
 app.get('/api/health', (_req, res) => {
