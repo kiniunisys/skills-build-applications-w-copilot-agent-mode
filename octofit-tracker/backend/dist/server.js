@@ -12,6 +12,8 @@ const User_1 = __importDefault(require("./models/User"));
 const Workout_1 = __importDefault(require("./models/Workout"));
 const app = (0, express_1.default)();
 const PORT = 8000;
+const codespaceName = process.env.CODESPACE_NAME;
+const API_BASE_URL = codespaceName ? `https://${codespaceName}-${PORT}.app.github.dev` : `http://localhost:${PORT}`;
 app.use(express_1.default.json());
 app.get('/api/health', (_req, res) => {
     res.json({ status: 'ok', service: 'octofit-tracker-backend' });
@@ -38,7 +40,7 @@ app.use((error, _req, res, _next) => {
 async function startServer() {
     await (0, database_1.default)();
     app.listen(PORT, '0.0.0.0', () => {
-        console.log(`OctoFit Tracker API running on port ${PORT}`);
+        console.log(`OctoFit Tracker API running at ${API_BASE_URL}`);
     });
 }
 startServer().catch((error) => {

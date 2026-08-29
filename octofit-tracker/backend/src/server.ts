@@ -8,6 +8,8 @@ import Workout from './models/Workout';
 
 const app = express();
 const PORT = 8000;
+const codespaceName = process.env.CODESPACE_NAME;
+const API_BASE_URL = codespaceName ? `https://${codespaceName}-${PORT}.app.github.dev` : `http://localhost:${PORT}`;
 
 app.use(express.json());
 
@@ -44,7 +46,7 @@ async function startServer() {
   await connectToDatabase();
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`OctoFit Tracker API running on port ${PORT}`);
+    console.log(`OctoFit Tracker API running at ${API_BASE_URL}`);
   });
 }
 
